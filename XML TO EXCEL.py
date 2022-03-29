@@ -23,7 +23,7 @@ while True:
         with open('CTEA.xml', 'r') as f:
             data = f.read()
         #abre o excel de destino || opens target excel
-        wb = openpyxl.load_workbook("Planilha Teste.xlsx")
+        wb = openpyxl.load_workbook("ExcelPath.xlsx")
         sheet = wb.active
 
                                        
