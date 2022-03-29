@@ -10,7 +10,7 @@ import os, os.path
 #lista das tags procuradas || a list of needed tags
 nInfo = ["dhEmi", "idUnidTransp", "xMunFim", "qCarga", "vTPrest"]
 
-
+# acho q tu devia entao usar o threading para ficar checkando se veio xml novo
 #checa se chegou novo xml || checks if a new xml arrived
 while True:
     if path.exists("CTEN.xml"):
@@ -28,11 +28,11 @@ while True:
 
                                        
         #passa as info para o a biblioteca||parses xml info to the library
-        Bs_data = BeautifulSoup(data, "xml")
+        bsData = BeautifulSoup(data, "xml")
          
 
         for info in nInfo: #loop que passa cada informação da var nInfo|| for loop for each var in nInfo 
-            x = Bs_data.find(info) #acha todas as tags especificadas||finds all specified tags
+            x = bsData.find(info) #acha todas as tags especificadas||finds all specified tags
             
             x = x.text #remove a tag do xml|| removes xml tag
 
@@ -55,7 +55,7 @@ while True:
             print(d)
             cell = sheet.cell(row = r, column = c)
             cell.value = d
-            c = c+1
+            c += 1
 
         wb.save("Planilha Teste.xlsx")# salva || saves
         os.remove("CTEA.xml")#deleta xml atual pra nao dar bagunça || deletes current xml for organization
